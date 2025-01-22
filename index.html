@@ -55,7 +55,17 @@ title: APK Station
 
 <!-- Search Results -->
 <div id="search-results" class="row mb-4"></div>
-
+<div class="carousel-inner">
+  {% for trending in site.data.trending %}
+  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+    <img src="{{ site.baseurl }}/assets/images/{{ trending.image }}" class="d-block w-100" alt="{{ trending.name }}">
+    <div class="carousel-caption d-none d-md-block">
+      <h5>{{ trending.name }}</h5>
+      <p>{{ trending.description }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 <!-- Default List -->
 <div id="default-apk-list" class="row mb-4">
   {% for apk in site.apks %}
@@ -73,3 +83,4 @@ title: APK Station
     </div>
   {% endfor %}
 </div>
+<div class="carousel-item active" data-bs-interval="5000">
