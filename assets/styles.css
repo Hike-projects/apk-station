@@ -66,3 +66,16 @@ a {
   -webkit-tap-highlight-color: transparent; /* Disable blue highlight effect on mobile */
   touch-action: manipulation; /* Prevent tap/gesture interference */
 }
+#search-bar {
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+#default-apk-list,
+#search-results {
+  display: flex;
+  flex-wrap: wrap;
+}
