@@ -79,3 +79,15 @@ a {
   display: flex;
   flex-wrap: wrap;
 }
+/* Prevent images from being hidden or stretched */
+.card-img-top {
+  display: block; /* Ensure images are always displayed */
+  max-width: 100%; /* Keep images responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Ensure cards always show (no breaking) */
+.card {
+  visibility: visible; /* Ensure cards are not hidden */
+  display: flex;       /* Preserve layout when searching */
+}
