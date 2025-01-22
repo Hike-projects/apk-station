@@ -1,8 +1,8 @@
 # Site settings
 title: APK Station
 description: A simple website to host APK files
-url: "https://hike-projects.github.io" # Base URL for your GitHub Pages site
-baseurl: "/apk-station" # Subpath of your repository
+url: "https://yourusername.github.io" # Replace with the correct URL
+baseurl: "/apk-station" # Subpath of the repository
 
 # Build settings
 theme: minima
@@ -10,26 +10,26 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
 
-# Disable default post collections
-collections:
-  posts:
-    output: false
-
-# Permalink structure
-permalink: /:name/
-
-# Defaults for all files
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      layout: default
+# Collections (Define once for custom collections like `apks`)
 collections:
   apks:
-    output: true
+    output: true # Enables generation of pages for this collection
+
+# Permalinks
 permalink: /:collection/:name/
 
-collections:
-  apks:
-    output: true
+# Defaults (Global metadata for all files)
+defaults:
+  - scope:
+      path: "" # Applies to all files
+    values:
+      layout: default
+      author: APK Station
+
+# Exclude unnecessary files from being processed by Jekyll
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
