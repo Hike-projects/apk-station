@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<ul>
+  {% for apk in site.data.apks %}
+    <li>
+      <h2>{{ apk.name }} (v{{ apk.version }})</h2>
+      <p>{{ apk.description }}</p>
+      <a href="{{ site.baseurl }}{{ apk.download_url }}">Download</a>
+    </li>
+  {% endfor %}
+</ul>
