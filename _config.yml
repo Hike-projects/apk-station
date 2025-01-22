@@ -1,55 +1,27 @@
 # Site settings
 title: APK Station
-email: your-email@example.com
 description: A simple website to host APK files
-baseurl: "/apk-station" # the subpath of your site, e.g. /blog
-url: "https://hike-projects.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username: jekyll
+url: "https://hike-projects.github.io" # Base URL for your GitHub Pages site
+baseurl: "/apk-station" # Subpath of your repository
 
 # Build settings
 theme: minima
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-feed
+
+# Disable default post collections
+collections:
+  posts:
+    output: false
 
 # Permalink structure
-permalink: /:categories/:title/
+permalink: /:name/
 
-# Jekyll SEO tag settings (optional, but recommended for SEO)
-jekyll_seo_tag:
-  social: 
-    name: "APK Station"
-    image: "/assets/images/logo.png"  # Example: Path to your site's logo
-
-# Pagination settings (optional)
-pagination:
-  enabled: true
-  per_page: 10
-  paginate_path: "/page:num/"
-  layout: default
-
-# Exclude from processing
-exclude:
-  - vendor
-  - node_modules
-  - Gemfile
-  - Gemfile.lock
-
-# Include additional files
-include:
-  - _config.yml
-
-# Optional settings for plugins
-kramdown:
-  input: GFM
-  hard_wrap: false
-
-# Default metadata for your site
+# Defaults for all files
 defaults:
   -
     scope:
-      path: ""  # Empty string applies to all files
+      path: ""
     values:
       layout: default
-      author: yourname  # Default author name
