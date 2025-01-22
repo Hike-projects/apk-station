@@ -91,3 +91,19 @@ a {
   visibility: visible; /* Ensure cards are not hidden */
   display: flex;       /* Preserve layout when searching */
 }
+/* Top Carousel */
+#top-trending-carousel img {
+  height: 400px;
+  object-fit: cover; /* Maintains image aspect ratio */
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+  padding: 10px;
+  border-radius: 10px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
