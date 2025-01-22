@@ -45,3 +45,15 @@ a {
 .card-body {
   font-size: 0.875rem;
 }
+/* Prevent text selection globally (not recommended unless necessary) */
+body {
+  user-select: none; /* Disable text selection globally */
+}
+
+/* Disable text selection for specific elements */
+.card-title,
+.card-text,
+h1,
+p {
+  user-select: none; /* Disable text selection */
+}
