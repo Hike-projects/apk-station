@@ -1,0 +1,9 @@
+- name: WhatsApp
+  version: 2.21.12.21
+  description: A messaging app
+  download_url: /downloads/whatsapp.apk
+
+- name: Instagram
+  version: 190.0.0.1
+  description: A social media app
+  download_url: /downloads/instagram.apk
