@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="container py-5">
+  <div class="card mb-4 shadow">
+    <img src="{{ page.image_url }}" alt="{{ page.name }}" class="card-img-top">
+    <div class="card-body">
+      <h1 class="card-title">{{ page.name }}</h1>
+      <p class="card-text"><strong>Version:</strong> {{ page.version }}</p>
+      <p class="card-text">{{ page.description }}</p>
+      <p class="card-text"><strong>Category:</strong> {{ page.category }}</p>
+      <p class="card-text"><strong>Developer:</strong> {{ page.developer }}</p>
+      <p class="card-text"><strong>Size:</strong> {{ page.size }}</p>
+      <p class="card-text"><strong>Rating:</strong> ⭐️ {{ page.rating }}</p>
+      <a href="{{ page.download_url }}" class="btn btn-primary">Download {{ page.name }}</a>
+    </div>
+  </div>
+</div>
