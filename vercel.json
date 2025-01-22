@@ -46,11 +46,13 @@
       ]
     }
   ],
+  {
   "functions": {
-    "api/**/*.js": {
-      "memory": 128,
-      "maxDuration": 10
+    "api/users/**/*.js": {
+      "maxDuration": 30
     }
+  }
+}
   },
   "env": {
     "NEXT_PUBLIC_ANALYTICS_ID": "YOUR_ANALYTICS_ID"
