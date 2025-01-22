@@ -1,0 +1,14 @@
+---
+layout: none
+---
+
+[
+{% for apk in site.apks %}
+  {
+    "name": "{{ apk.name }}",
+    "description": "{{ apk.description }}",
+    "url": "{{ site.baseurl }}/apks/{{ apk.name | slugify }}/",
+    "developer": "{{ apk.developer }}"
+  }{% if forloop.last == false %},{% endif %}
+{% endfor %}
+]
