@@ -29,3 +29,7 @@ collections:
   apks:
     output: true
 permalink: /:collection/:name/
+
+collections:
+  apks:
+    output: true
