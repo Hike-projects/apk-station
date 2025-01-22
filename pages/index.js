@@ -2,81 +2,71 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 
-const apks = [
+const apps = [
   {
     name: "WhatsApp",
     version: "2.21.12.21",
     description: "A popular messaging app lets people stay in touch easily and for free.",
-    image_url: "/assets/images/whatsapp.png",
-    download_url: "https://github.com/YourUsername/YourRepo/releases/download/v1.0/whatsapp.apk",
+    imageUrl: "/images/whatsapp.png",
+    downloadUrl: "https://example.com/download/whatsapp.apk",
   },
-  // Add more APK data here...
+  {
+    name: "TikTok",
+    version: "19.2.3",
+    description: "Create and share your short-form videos with the world.",
+    imageUrl: "/images/tiktok.png",
+    downloadUrl: "https://example.com/download/tiktok.apk",
+  },
+  {
+    name: "Instagram",
+    version: "150.0.0.33.120",
+    description: "Connect with friends, share what you’re up to, or see what’s new from others all over the world.",
+    imageUrl: "/images/instagram.png",
+    downloadUrl: "https://example.com/download/instagram.apk",
+  },
 ];
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout>
       <Head>
         <title>APK Station</title>
+        <meta name="description" content="APK Station - Discover the best APKs" />
       </Head>
 
-      {/* Image Banner Carousel */}
-      <div id="top-trending-carousel" className="carousel slide mb-4" data-bs-ride="carousel">
-        <div className="carousel-inner">
-          {[
-            { src: "/assets/images/trending-1.jpg", name: "Free Fire MAX", description: "Experience the ultimate battle royale on mobile!" },
-            { src: "/assets/images/trending-2.jpg", name: "WhatsApp", description: "Stay connected with friends and family, anywhere in the world." },
-            { src: "/assets/images/trending-3.jpg", name: "TikTok", description: "Create and share your short-form videos with the world." }
-          ].map((item, index) => (
-            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-              <img src={item.src} className="d-block w-full h-64 object-cover" alt={item.name} />
-              <div className="carousel-caption d-none d-md-block bg-black bg-opacity-50 p-2 rounded">
-                <h5 className="text-xl">{item.name}</h5>
-                <p className="text-base">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#top-trending-carousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#top-trending-carousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      {/* Search Bar */}
-      <div className="container my-4">
-        <input
-          type="text"
-          id="search-bar"
-          className="form-control"
-          placeholder="Search for APKs..."
+      <section className="text-center py-10 bg-gray-100">
+        <h2 className="text-4xl font-bold mb-4">Discover the Best APKs</h2>
+        <p className="text-xl text-gray-700 mb-4">
+          Find and download the latest and greatest APKs right here at APK Station.
+        </p>
+        <input 
+          type="text" 
+          className="w-full max-w-md mx-auto px-4 py-2 rounded shadow-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+          placeholder="Search for APKs..." 
         />
-      </div>
+      </section>
 
-      {/* Search Results */}
-      <div id="search-results" className="row mb-4"></div>
-
-      {/* Default List (Hidden when search is active) */}
-      <div id="default-apk-list" className="row mb-4">
-        {apks.map((apk, index) => (
-          <div key={index} className="col-6 col-md-4 col-lg-3 mb-4">
-            <div className="card h-100 shadow-lg">
-              <img src={apk.image_url} className="card-img-top" alt={apk.name} />
-              <div className="card-body text-center">
-                <h5 className="card-title">{apk.name}</h5>
-                <p className="card-text">{apk.description}</p>
-                <p><strong>Version:</strong> {apk.version}</p>
-                <a href={`/apks/${apk.name.toLowerCase().replace(/\s+/g, '-')}`} className="btn btn-secondary btn-sm">Details</a>
-                <a href={apk.download_url} className="btn btn-primary btn-sm">Download</a>
+      <section className="py-10">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {apps.map((app, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src={app.imageUrl} alt={app.name} className="w-full h-40 object-cover" />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">{app.name}</h3>
+                  <p className="text-gray-600 mb-2">{app.description}</p>
+                  <p className="text-sm text-gray-500">Version: {app.version}</p>
+                  <div className="mt-4">
+                    <a href={app.downloadUrl} className="text-blue-500 hover:underline">Download</a>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
     </Layout>
   );
-}
+};
+
+export default Home;
