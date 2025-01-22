@@ -3,7 +3,24 @@ layout: default
 title: APK Station
 ---
 
-<div class="row mb-4">
+<h1 class="text-center my-4">APK Station</h1>
+
+<!-- Search Bar -->
+<div class="container my-4">
+  <input
+    type="text"
+    id="search-bar"
+    class="form-control"
+    placeholder="Search for APKs..."
+    oninput="performSearch()"
+  />
+</div>
+
+<!-- Search Results -->
+<div id="search-results" class="row mb-4"></div>
+
+<!-- Default List (Hidden when search is active) -->
+<div id="default-apk-list" class="row mb-4">
   {% for apk in site.apks %}
     <div class="col-6 col-md-4 col-lg-3 mb-4">
       <div class="card h-100 shadow">
@@ -19,3 +36,61 @@ title: APK Station
     </div>
   {% endfor %}
 </div>
+
+<script>
+  // Fetch search data
+  const searchInput = document.getElementById("search-bar");
+  const defaultList = document.getElementById("default-apk-list");
+  const resultsContainer = document.getElementById("search-results");
+
+  let searchData = [];
+  fetch("{{ site.baseurl }}/search.json")
+    .then((response) => response.json())
+    .then((data) => {
+      searchData = data;
+    })
+    .catch((error) => console.error("Error fetching search data:", error));
+
+  // Perform the search and update the UI
+  function performSearch() {
+    const query = searchInput.value.toLowerCase();
+    resultsContainer.innerHTML = ""; // Clear previous results
+
+    // Hide default APK list if a search query exists
+    if (query.length > 0) {
+      defaultList.style.display = "none";
+    } else {
+      defaultList.style.display = "flex";
+      return;
+    }
+
+    // Filter the APKs based on the search query
+    const filteredResults = searchData.filter(
+      (apk) =>
+        apk.name.toLowerCase().includes(query) ||
+        apk.description.toLowerCase().includes(query)
+    );
+
+    // Display results
+    if (filteredResults.length === 0) {
+      resultsContainer.innerHTML = `<p class="text-center">No results found for "<strong>${query}</strong>"</p>`;
+    } else {
+      filteredResults.forEach((apk) => {
+        const apkCard = `
+          <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="card h-100 shadow">
+              <img src="${apk.image_url}" class="card-img-top" alt="${apk.name}">
+              <div class="card-body text-center">
+                <h5 class="card-title">${apk.name}</h5>
+                <p class="card-text">${apk.description}</p>
+                <p><strong>Version:</strong> ${apk.version}</p>
+                <a href="${apk.url}" class="btn btn-secondary btn-sm">Details</a>
+                <a href="${apk.download_url}" class="btn btn-primary btn-sm">Download</a>
+              </div>
+            </div>
+          </div>`;
+        resultsContainer.innerHTML += apkCard;
+      });
+    }
+  }
+</script>
