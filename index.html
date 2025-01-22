@@ -1,4 +1,17 @@
 ---
-layout: apk_list
-title: Home
+layout: default
+title: APK Station
 ---
+
+<h1>Welcome to APK Station!</h1>
+<p>A simple website to host APK files. Select and download your desired APK below:</p>
+
+<ul>
+  {% for apk in site.data.apks %}
+    <li>
+      <h2>{{ apk.name }} (v{{ apk.version }})</h2>
+      <p>{{ apk.description }}</p>
+      <a href="{{ site.baseurl }}{{ apk.download_url }}">Download</a>
+    </li>
+  {% endfor %}
+</ul>
