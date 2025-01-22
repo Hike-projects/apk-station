@@ -25,3 +25,7 @@ defaults:
       path: ""
     values:
       layout: default
+collections:
+  apks:
+    output: true
+permalink: /:collection/:name/
