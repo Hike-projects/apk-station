@@ -23,6 +23,22 @@ li {
 h2 {
   margin: 0;
 }
+/* Disable text selection globally */
+* {
+  user-select: none; /* Disable text selection */
+  -webkit-user-select: none; /* For WebKit (Chrome, Safari, etc.) */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+  -moz-user-select: none; /* For Firefox */
+}
+
+/* Optional: Allow selection for specific elements, like input fields or other needed areas */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  -moz-user-select: text;
+}
+
 
 a {
   text-decoration: none;
